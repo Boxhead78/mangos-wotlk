@@ -296,6 +296,10 @@ class Group
         BoundInstancesMap& GetBoundInstances(Difficulty difficulty) { return m_boundInstances[difficulty]; }
 
         LfgData& GetLfgData() { return m_lfgData; }
+        
+#ifdef ENABLE_PLAYERBOTS
+        ObjectGuid GetTargetIcon(int index) { return m_targetIcons[index]; }
+#endif
 
     protected:
         bool _addMember(ObjectGuid guid, const char* name, bool isAssistant = false);
