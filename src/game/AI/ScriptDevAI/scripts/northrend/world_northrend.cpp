@@ -38,6 +38,13 @@ struct world_map_northrend : public ScriptedMap
     }
 
     void SetData(uint32 /*uiType*/, uint32 /*uiData*/) {}
+
+    bool CheckConditionCriteriaMeet(Player const* player, uint32 instanceConditionId, WorldObject const* conditionSource, uint32 conditionSourceType) const override
+    {
+        script_error_log("world_map_northrend::CheckConditionCriteriaMeet called with unsupported Id %u. Called with param plr %s, src %s, condition source type %u",
+            instanceConditionId, player ? player->GetGuidStr().c_str() : "nullptr", conditionSource ? conditionSource->GetGuidStr().c_str() : "nullptr", conditionSourceType);
+        return false;
+    }
 };
 
 InstanceData* GetInstanceData_world_map_northrend(Map* pMap)
