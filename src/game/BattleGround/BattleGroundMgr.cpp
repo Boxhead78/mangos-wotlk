@@ -1747,7 +1747,8 @@ BattleGround* BattleGroundMgr::CreateNewBattleGround(BattleGroundTypeId bgTypeId
 
     if (bgTypeId == BATTLEGROUND_RB)
     {
-        BattleGroundTypeId battlegrounds[] = { BATTLEGROUND_AV, BATTLEGROUND_WS, BATTLEGROUND_AB, BATTLEGROUND_EY, BATTLEGROUND_SA, BATTLEGROUND_IC};
+        //BattleGroundTypeId battlegrounds[] = { BATTLEGROUND_AV, BATTLEGROUND_WS, BATTLEGROUND_AB, BATTLEGROUND_EY, BATTLEGROUND_SA, BATTLEGROUND_IC};
+        BattleGroundTypeId battlegrounds[] = { BATTLEGROUND_AV, BATTLEGROUND_WS, BATTLEGROUND_AB, BATTLEGROUND_EY };
         bgTypeId = battlegrounds[urand(0, countof(battlegrounds) - 1)];
 
         bgRandomTypeId = bgTypeId;

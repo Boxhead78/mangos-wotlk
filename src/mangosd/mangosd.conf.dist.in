@@ -1577,7 +1577,9 @@ Visibility.AIRelocationNotifyDelay = 1000
 ###################################################################################################################
 
 Rate.Health = 1
+Rate.Health.Bot = 1
 Rate.Mana = 1
+Rate.Mana.Bot = 1
 Rate.Rage.Income = 1
 Rate.Rage.Loss = 1
 Rate.RunicPower.Income = 1

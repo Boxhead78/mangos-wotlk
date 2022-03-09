@@ -38,6 +38,7 @@
 #include "Tools/Language.h"
 #include "Spells/SpellMgr.h"
 #include "Calendar/Calendar.h"
+#include "Chat/Chat.h"
 #include "AI/ScriptDevAI/ScriptDevAIMgr.h"
 #include "Anticheat/Anticheat.hpp"
 
@@ -861,7 +862,11 @@ void WorldSession::HandlePlayerLogin(LoginQueryHolder* holder)
 
     // Send Spam records
     SendExpectedSpamRecords();
-    SendMotd();
+    //Weekend double xp
+    SYSTEMTIME systime;
+    GetLocalTime(&systime);
+    if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+        SendMotd();
 
     SendOfflineNameQueryResponses();
 
@@ -1132,7 +1137,11 @@ void WorldSession::HandlePlayerReconnect()
 
     // Send Spam records
     SendExpectedSpamRecords();
-    SendMotd();
+    //Weekend double xp
+    SYSTEMTIME systime;
+    GetLocalTime(&systime);
+    if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+        SendMotd();
 
     SendOfflineNameQueryResponses();
 

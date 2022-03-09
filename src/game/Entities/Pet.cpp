@@ -903,6 +903,14 @@ void Pet::GivePetXP(uint32 xp)
 
         xp *= sWorld.getConfig(CONFIG_FLOAT_RATE_PET_XP_KILL);
 
+        //Weekend double xp
+        SYSTEMTIME systime;
+        GetLocalTime(&systime);
+        if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+        {
+            xp = xp * 2;
+        }
+
         uint32 nextLvlXP = GetUInt32Value(UNIT_FIELD_PETNEXTLEVELEXP);
         uint32 curXP = GetUInt32Value(UNIT_FIELD_PETEXPERIENCE);
         uint32 newXP = curXP + xp;

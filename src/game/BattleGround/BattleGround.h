@@ -254,6 +254,8 @@ enum ScoreType
     // SA
     SCORE_GATES_DESTROYED       = 16,
     SCORE_DEMOLISHERS_DESTROYED = 17,
+    // CUSTOM
+    SCORE_GIVE_XP = 18,
 };
 
 enum BattleGroundType

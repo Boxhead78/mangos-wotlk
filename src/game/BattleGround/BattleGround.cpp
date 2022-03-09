@@ -1007,6 +1007,24 @@ void BattleGround::EndBattleGround(Team winner)
             RewardMark(plr, ITEM_WINNER_COUNT);
             RewardQuestComplete(plr);
 
+            float xpfactor;
+            if (IsArena())
+                xpfactor = 0.01;
+
+            else if (IsBattleGround())
+                xpfactor = 0.05;
+
+            //Weekend double xp
+            SYSTEMTIME systime;
+            GetLocalTime(&systime);
+            if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+            {
+                xpfactor = xpfactor * 2;
+            }
+
+            UpdatePlayerScore(plr, SCORE_GIVE_XP, sObjectMgr.GetXPForLevel(plr->GetLevel())*xpfactor);
+
+
             if (IsRandom())
             {
                 UpdatePlayerScore(plr, SCORE_BONUS_HONOR, GetBonusHonorFromKill(winKills * 4));
@@ -1022,6 +1040,23 @@ void BattleGround::EndBattleGround(Team winner)
         else
         {
             RewardMark(plr, ITEM_LOSER_COUNT);
+
+            float xpfactor;
+            if (IsArena())
+                xpfactor = 0.001;
+
+            else if (IsBattleGround())
+                xpfactor = 0.005;
+
+            //Weekend double xp
+            SYSTEMTIME systime;
+            GetLocalTime(&systime);
+            if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+            {
+                xpfactor = xpfactor * 2;
+            }
+
+            UpdatePlayerScore(plr, SCORE_GIVE_XP, sObjectMgr.GetXPForLevel(plr->GetLevel())*xpfactor);
 
             if (IsRandom())
                 UpdatePlayerScore(plr, SCORE_BONUS_HONOR, GetBonusHonorFromKill(loseKills * 4));
@@ -1779,6 +1814,11 @@ void BattleGround::UpdatePlayerScore(Player* player, uint32 type, uint32 value)
             break;
         case SCORE_HEALING_DONE:                            // Healing Done
             itr->second->healingDone += value;
+            break;
+        case SCORE_GIVE_XP:
+            // also give some xp
+            if (value > 0)
+                player->GiveXP(value, nullptr);
             break;
         default:
             sLog.outError("BattleGround: Unknown player score type %u", type);

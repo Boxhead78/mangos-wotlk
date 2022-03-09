@@ -2499,7 +2499,16 @@ void Player::Regenerate(Powers power, uint32 diff)
             if (HasAuraType(SPELL_AURA_STOP_NATURAL_MANA_REGEN))
                 break;
             bool recentCast = IsUnderLastManaUseEffect();
-            float ManaIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_POWER_MANA);
+            float ManaIncreaseRate;
+            PlayerbotAI playerbotAI;
+            if (!playerbotAI.IsRealPlayer())
+            {
+                ManaIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_POWER_MANA);
+            }
+            else 
+            {
+                ManaIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_POWER_MANA_BOT);
+            }
             if (recentCast)
             {
                 // Mangos Updates Mana in intervals of 2s, which is correct
@@ -2579,7 +2588,16 @@ void Player::RegenerateHealth(uint32 diff)
 
     if (curValue >= maxValue) return;
 
-    float HealthIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_HEALTH);
+    float HealthIncreaseRate;
+    PlayerbotAI playerbotAI;
+    if (!playerbotAI.IsRealPlayer())
+    {
+        HealthIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_HEALTH);
+    }
+    else 
+    {
+        HealthIncreaseRate = sWorld.getConfig(CONFIG_FLOAT_RATE_HEALTH_BOT);
+    }
 
     float addvalue = 0.0f;
 

@@ -416,7 +416,9 @@ void World::LoadConfigSettings(bool reload)
 
     ///- Read all rates from the config file
     setConfigPos(CONFIG_FLOAT_RATE_HEALTH,                               "Rate.Health",                               1.0f);
+    setConfigPos(CONFIG_FLOAT_RATE_HEALTH_BOT,                           "Rate.Health.Bot",                           1.0f);
     setConfigPos(CONFIG_FLOAT_RATE_POWER_MANA,                           "Rate.Mana",                                 1.0f);
+    setConfigPos(CONFIG_FLOAT_RATE_POWER_MANA_BOT,                       "Rate.Mana.Bot",                             1.0f);
     setConfigPos(CONFIG_FLOAT_RATE_POWER_RAGE_INCOME,                    "Rate.Rage.Income",                          1.0f);
     setConfigPos(CONFIG_FLOAT_RATE_POWER_RAGE_LOSS,                      "Rate.Rage.Loss",                            1.0f);
     setConfigPos(CONFIG_FLOAT_RATE_POWER_RUNICPOWER_INCOME,              "Rate.RunicPower.Income",                    1.0f);

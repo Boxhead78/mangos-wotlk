@@ -151,6 +151,19 @@ namespace MaNGOS
 
             xp_gain = target->GetModifierXpBasedOnDamageReceived(xp_gain);
 
+            if (target->GetCreatureInfo()->Rank == CREATURE_ELITE_RARE || target->GetCreatureInfo()->Rank == CREATURE_ELITE_RAREELITE)
+            {
+                xp_gain = xp_gain * 30;
+            }
+
+            //Weekend double xp
+            SYSTEMTIME systime;
+            GetLocalTime(&systime);
+            if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+            {
+                xp_gain = xp_gain * 2;
+            }
+
             return (uint32)(std::nearbyint(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL)));
         }
 
