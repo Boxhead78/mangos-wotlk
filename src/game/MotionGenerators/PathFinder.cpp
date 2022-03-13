@@ -865,7 +865,7 @@ void PathFinder::BuildPointPath(const float* startPoint, const float* endPoint)
 
 void PathFinder::NormalizePath()
 {
-    if (!sWorld.getConfig(CONFIG_BOOL_PATH_FIND_NORMALIZE_Z) || m_ignoreNormalization)
+    if (!sWorld.getConfig(CONFIG_BOOL_PATH_FIND_NORMALIZE_Z) || m_ignoreNormalization || !m_sourceUnit)
         return;
 
     GenericTransport* transport;
