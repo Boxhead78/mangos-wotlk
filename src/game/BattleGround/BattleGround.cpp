@@ -1019,7 +1019,7 @@ void BattleGround::EndBattleGround(Team winner)
             GetLocalTime(&systime);
             if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
             {
-                xpfactor = xpfactor * 2;
+                xpfactor = xpfactor * 1.5;
             }
 
             UpdatePlayerScore(plr, SCORE_GIVE_XP, sObjectMgr.GetXPForLevel(plr->GetLevel())*xpfactor);
@@ -1053,7 +1053,7 @@ void BattleGround::EndBattleGround(Team winner)
             GetLocalTime(&systime);
             if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
             {
-                xpfactor = xpfactor * 2;
+                xpfactor = xpfactor * 1.5;
             }
 
             UpdatePlayerScore(plr, SCORE_GIVE_XP, sObjectMgr.GetXPForLevel(plr->GetLevel())*xpfactor);

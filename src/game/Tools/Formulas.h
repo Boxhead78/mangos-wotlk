@@ -161,7 +161,7 @@ namespace MaNGOS
             GetLocalTime(&systime);
             if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
             {
-                xp_gain = xp_gain * 2;
+                xp_gain = xp_gain * 1.5;
             }
 
             return (uint32)(std::nearbyint(xp_gain * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_KILL)));

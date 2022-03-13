@@ -14543,6 +14543,13 @@ void Player::RewardQuest(Quest const* pQuest, uint32 reward, Object* questGiver,
     // Used for client inform but rewarded only in case not max level
     uint32 xp = uint32(pQuest->XPValue(this) * sWorld.getConfig(CONFIG_FLOAT_RATE_XP_QUEST));
 
+    SYSTEMTIME systime;
+    GetLocalTime(&systime);
+    if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
+    {
+        xp = xp * 1.5;
+    }
+
     if (GetLevel() < GetMaxAttainableLevel())
     {
         GiveXP(xp, nullptr);

@@ -908,7 +908,7 @@ void Pet::GivePetXP(uint32 xp)
         GetLocalTime(&systime);
         if (systime.wDayOfWeek == 6 || systime.wDayOfWeek == 0)
         {
-            xp = xp * 2;
+            xp = xp * 1.5;
         }
 
         uint32 nextLvlXP = GetUInt32Value(UNIT_FIELD_PETNEXTLEVELEXP);
